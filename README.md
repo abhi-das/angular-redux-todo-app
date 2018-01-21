@@ -1,4 +1,4 @@
-# Angular Redux TODO App
+# Angular 5.x + Redux TODO App
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.6.0.
 
