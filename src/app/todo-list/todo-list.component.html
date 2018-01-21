@@ -1,0 +1,92 @@
+<h6 class="section-title">Create Todo</h6> <hr>
+<form role="form"
+		#createTodo="ngForm"
+		(ngSubmit)="onTodoSubmit()">
+	
+	<div class="form-row">
+		
+		<div class="col-auto">
+			
+			<input type="text"
+				class="form-control"
+				id="description"
+				[(ngModel)]="model.description"
+				name="description"
+				#description>
+		</div>
+
+		<div class="col-auto">
+			
+			<input type="text"
+				class="form-control"
+				id="responsibility"
+				[(ngModel)]="model.responsibility"
+				name="responsibility"
+				#responsibility>
+		</div>
+
+		<div class="col-auto">
+			
+			<select type="text"
+				class="form-control"
+				id="priority"
+				[(ngModel)]="model.priority"
+				name="priority"
+				#priority>
+				
+				<option value="low">Low</option>
+				<option value="medium">Medium</option>
+				<option value="high">High</option>
+
+			</select>
+
+		</div>
+		<div class="col-auto">
+			<button type="submit" class="btn btn-primary btn-sm">Create</button>
+		</div>
+	</div>
+</form>
+
+<div *ngIf="(todos | async).length">
+
+	<h6 class="section-title">Todo List:</h6> <hr>
+	<table class="table" >
+		<thead class="thead-inverse">
+			<tr>
+				<th>#</th>
+				<th>Description</th>
+				<th>Responsibility</th>
+				<th>Priority</th>
+				<th>Update</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr *ngFor="let t of todos | async" [class.complete]="t.isCompleted">
+				<td>
+					<span>{{ t.id }}</span>
+				</td>
+				<td>
+					<span>{{ t.description }}</span>
+				</td>
+				<td>
+					<span *ngIf="t.priority==='low'" class="badge badge-success">{{ t.priority }}</span>
+					<span *ngIf="t.priority==='medium'" class="badge badge-warning">{{ t.priority }}</span>
+					<span *ngIf="t.priority==='high'" class="badge badge-danger">{{ t.priority }}</span>
+				</td>
+				<td>
+					<button class="btn btn-primary btn-sm" (click)="onRemoveTodo(t)">Delete</button>
+					
+				</td>
+				<td>
+					<button class="btn btn-primary btn-sm" 
+						(click)="onToggleTodo(t)"
+						[class.btn-warning]="!t.isCompleted">
+						{{
+							t.isCompleted === false ? 'Incomplete' : 'Complete'
+						}}
+					</button>
+				</td>
+			</tr>
+		</tbody>	
+	</table>
+</div>

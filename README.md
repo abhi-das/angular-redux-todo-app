@@ -30,4 +30,5 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 ## Ref
 
 https://www.youtube.com/watch?v=5NWClfa8PUQ
+<br/>
 https://www.pluralsight.com/guides/front-end-javascript/ui-state-management-with-redux-in-angular-4
